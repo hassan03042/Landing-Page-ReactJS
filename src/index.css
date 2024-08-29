@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@media only screen and (max-width: 768px) {
+    .balancemedia {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .balancequery{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .submitquery{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+  }

@@ -1,19 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Button from './components/Button'
-import landingPageData from './constant/webData'
-import { data } from 'autoprefixer'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Features from './components/Features'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Button from "./components/Button";
+import landingPageData from "./constant/webData";
+import { data } from "autoprefixer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Features from "./components/Features";
+import ExpenseTracker from "./components/ExpenseTracker";
 
 function App() {
-  console.log(landingPageData);
-  const {header, hero, features, testimonials, callToAction} = landingPageData
-  
-  const [count, setCount] = useState(0)
+  // console.log(landingPageData);
+  const { header, hero, features, testimonials, callToAction } =
+    landingPageData;
+
+  const [amount, setAmount] = useState("");
+  const [type, setType] = useState("Income");
+  const [transaction, setTransaction] = useState([]);
+
+  const handleAddTransaction = () => {
+    setTransaction([...transaction, { amount, type }]);
+    setAmount("");
+    setType("Income");
+  };
+
+
+  // console.log("transactions =>", transaction);
 
   return (
     <div>
@@ -21,25 +34,27 @@ function App() {
 
       <Header header={header} />
 
+<ExpenseTracker setAmount={setAmount}
+setType={setType}
+handleAddTransaction={handleAddTransaction}
+transaction={transaction}
+amount={amount}
+type={type} />
 
-{/* hero */}
+      {/* hero */}
 
-<Hero hero={hero}/>
+      <Hero hero={hero} />
 
+      {/* features */}
 
-{/* features */}
-
-<Features features={features} />
-
-
+      <Features features={features} />
     </div>
-
-  )
+  );
 }
 
-
-
-{/* <Button label={"Login"} onClick={() => alert("Button clicked!")}/> */}
+{
+  /* <Button label={"Login"} onClick={() => alert("Button clicked!")}/> */
+}
 // onClick={onClick}
 //     <><h1 className="text-3xl font-bold underline">  Hello world!</h1>
 //     <div>
@@ -53,4 +68,4 @@ function App() {
 //     <button className='border border-blue-900 rounded-md p-3 m-4'>Contact Us</button> */}
 //     </div>
 //     </>
-export default App
+export default App;
